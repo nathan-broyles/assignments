@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+    function buttonCreate(num){
+        if (num > 1 && num < 26) {
+            for (let i = 0; i < num; i++){
+                let button = document.createElement("BUTTON");
+                let letter = String.fromCharCode(65 + i);
+                button.innerHTML = letter;
+                button.onclick = function() {console.log("the button " + letter + " was pressed.")};
+                document.body.appendChild(button);
+            }
+        } else {
+            buttonPrompt();
+        }
+    }
+    function recipeCreate(title, servings, ingredients){
+        this.title = title;
+        this.servings = servings;
+        this.ingredients = ingredients;
+        this.print = function(){
+            document.write("<br>Title: " + title + "<br>");
+            document.write("Serves: " + String(servings) + "<br>");
+            document.write("Ingredients:<br>");
+            for (let i = 0; i < ingredients.length; i++){
+                document.write(ingredients[i] + "<br>")
+            }
+        }
+    }
+
+    function buttonPrompt(){
+        let num = prompt("How many buttons would you like? (between 1 and 26)");
+    buttonCreate(num);
+    }
+
+    buttonPrompt();
+    myObj = new recipeCreate ("Chicken Cacciatore", 2, ["cinnamon", "lettuce", "onion"] );
+    myObj.print()
+    </script>
+    </body>
+</html>
